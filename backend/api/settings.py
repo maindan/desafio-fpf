@@ -84,7 +84,7 @@ CHANNEL_LAYERS = {
     "default": {
         "BACKEND": "channels_redis.core.RedisChannelLayer",
         "CONFIG": {
-            "hosts": [("localhost", 6379)],
+            'hosts': [('redis', 6379)],
         },
     },
 }
@@ -135,7 +135,7 @@ USE_I18N = True
 
 USE_TZ = True
 
-CELERY_BROKER_URL = 'pyamqp://guest@localhost//'
+CELERY_BROKER_URL = 'amqp://guest:guest@rabbitmq:5672//'
 CELERY_TIME_ZONE = 'America/Sao_Paulo'
 CORS_ALLOW_ALL_ORIGINS = True
 

@@ -8,10 +8,7 @@ class ProcessamentoView(APIView):
         serializer = ProcessamentoSerializer(data=request.data)
         if serializer.is_valid():
             processamento = serializer.save(status="Processando...")
+            calculation.apply_async((processamento.id,))
             return Response({"id":processamento.id, "status": processamento.status})
         else:
             return Response(serializer.errors, status=400)
-    
-    def get(self, request, process_id):
-        calculation.delay(process_id)
-        return Response({"message":"Requisição enviada"})

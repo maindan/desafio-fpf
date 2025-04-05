@@ -40,10 +40,13 @@ INSTALLED_APPS = [
     'calculation',
     'rest_framework',
     'celery',
-    'channels'
+    'channels',
+    'corsheaders',
 ]
 
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',
+    'django.middleware.common.CommonMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -81,7 +84,7 @@ CHANNEL_LAYERS = {
     "default": {
         "BACKEND": "channels_redis.core.RedisChannelLayer",
         "CONFIG": {
-            "hosts": [("127.0.0.1", 6379)],
+            "hosts": [("localhost", 6379)],
         },
     },
 }
@@ -134,7 +137,7 @@ USE_TZ = True
 
 CELERY_BROKER_URL = 'pyamqp://guest@localhost//'
 CELERY_TIME_ZONE = 'America/Sao_Paulo'
-
+CORS_ALLOW_ALL_ORIGINS = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.2/howto/static-files/

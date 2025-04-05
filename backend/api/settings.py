@@ -86,6 +86,8 @@ CHANNEL_LAYERS = {
     },
 }
 
+ASGI_APPLICATION = 'api.asgi.application'
+
 WSGI_APPLICATION = 'api.wsgi.application'
 
 

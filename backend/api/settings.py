@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'calculation',
     'rest_framework',
+    'celery',
 ]
 
 MIDDLEWARE = [
@@ -118,6 +119,9 @@ TIME_ZONE = 'America/Sao_Paulo'
 USE_I18N = True
 
 USE_TZ = True
+
+CELERY_BROKER_URL = 'pyamqp://guest@localhost//'
+CELERY_TIME_ZONE = 'America/Sao_Paulo'
 
 
 # Static files (CSS, JavaScript, Images)
